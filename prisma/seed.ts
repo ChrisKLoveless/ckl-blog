@@ -39,8 +39,15 @@ async function seed() {
       userId: user.id,
     },
   });
-
+  
   console.log(`Database has been seeded. 🌱`);
+  for (const post of posts) {
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      update: post,
+      create: post,
+    });
+  }
 }
 
 seed()
@@ -51,3 +58,28 @@ seed()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+const posts = [
+  {
+    slug: "my-first-post",
+    title: "My First Post",
+    markdown: `
+      # This is my first blog post
+
+      Isn't it great?
+      `.trim(),
+  },
+  {
+    slug: "downhill-MTB",
+    title: "Downhill Mountain Biking Near Me",
+    markdown: `
+      # Downhill Mountain Biking Near Me
+      - Sandy Ridge Trial System
+      - Timberline Bike Park
+
+      `.trim(),
+  },
+];
+
+
+console.log(`Database has been seeded!`);
