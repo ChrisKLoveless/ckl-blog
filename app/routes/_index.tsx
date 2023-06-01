@@ -2,6 +2,7 @@ import type { V2_MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
 import { useOptionalUser } from "~/utils";
+import AIWallpaper from "../../public/img/AIWallpaper.png";
 
 export const meta: V2_MetaFunction = () => [{ title: "Remix Notes" }];
 
@@ -15,21 +16,17 @@ export default function Index() {
             <div className="absolute inset-0">
               <img
                 className="h-full w-full object-cover"
-                src="https://user-images.githubusercontent.com/1500684/157774694-99820c51-8165-4908-a031-34fc371ac0d6.jpg"
-                alt="Sonic Youth On Stage"
+                src={AIWallpaper}
+                alt="nature wallpaper"
               />
               <div className="absolute inset-0 bg-[color:rgba(254,204,27,0.5)] mix-blend-multiply" />
             </div>
             <div className="relative px-4 pb-8 pt-16 sm:px-6 sm:pb-14 sm:pt-24 lg:px-8 lg:pb-20 lg:pt-32">
-              <h1 className="text-center text-6xl font-extrabold tracking-tight sm:text-8xl lg:text-9xl">
+              <h3 className="text-center text-3xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
                 <span className="block uppercase text-yellow-500 drop-shadow-md">
-                  Indie Stack
+                  CKL Blog and Notes App
                 </span>
-              </h1>
-              <p className="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">
-                Check the README.md file for instructions on how to get this
-                project deployed.
-              </p>
+              </h3>
               <div className="mx-auto mt-10 max-w-sm sm:flex sm:max-w-none sm:justify-center">
                 {user ? (
                   <Link
