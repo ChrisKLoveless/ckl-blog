@@ -1,5 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Form, Link } from "@remix-run/react";
 
 import { useOptionalUser } from "~/utils";
 import AIWallpaper from "../../public/img/AIWallpaper.png";
@@ -38,16 +38,19 @@ export default function Index() {
                     </Link>
                     <Link
                       to="/posts"
-                      className="text-xl text-blue-600 underline"
+                      className="flex items-center justify-center rounded-md bg-yellow-500 px-4 py-3 font-medium text-white hover:bg-yellow-600"
+
                     >
                       Blog Posts
                     </Link>
-                    <Link
-                      to="/logout"
-                      className="flex items-center justify-center rounded-md bg-yellow-500 px-4 py-3 font-medium text-white hover:bg-yellow-600"
-                    >
-                      Log Out
-                    </Link>
+                    <Form action="/logout" method="post">
+                      <button
+                        type="submit"
+                        className="rounded bg-slate-600 px-4 py-2 text-blue-100 hover:bg-blue-500 active:bg-blue-600"
+                      >
+                        Logout
+                      </button>
+                    </Form>
                   </div>
                 ) : (
                   <div className="space-y-4 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5 sm:space-y-0">
