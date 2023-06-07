@@ -4,6 +4,9 @@ export async function getPosts() {
   return prisma.post.findMany();
 }
 
-export async function getPost(slug: string) {
-  return prisma.post.findUnique({ where: { slug } });
+export function getPost( slug: string) {
+  return prisma.post.findFirst({
+    where: { slug },
+    select: { markdown: true, title: true }
+  });
 }
