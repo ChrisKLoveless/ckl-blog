@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
-import { Form, Link } from "@remix-run/react";
+import { Form, Link, Outlet } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import { getPosts } from "~/models/post.server";
 import { useUser } from "~/utils";
@@ -22,7 +22,6 @@ export const loader: LoaderFunction = async () => {
 
 export default function Posts() {
   const { posts } = useLoaderData<LoaderData>();
-  console.log(posts);
   const user = useUser();
 
 
@@ -63,6 +62,9 @@ export default function Posts() {
       ) : (
         <p>Loading...</p>
       )}
+      <div className="flex-1 p-6">
+          <Outlet />
+      </div>
     </main>
   );
 }
